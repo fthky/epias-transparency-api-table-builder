@@ -194,13 +194,17 @@ if st.sidebar.button('Create Table'):
        
 else:
    st.markdown("""
+   
+                 ##### You can open the data selection tab on mobile devices by using the arrow in the upper left or you can choose to use full screen from the computer.    
+                    
+                
                 ##### About Application
                 Have you created a dataset by taking columns from different excel files and combining them in another excel file? 
                 If your answer is yes, you know how boring and time consuming activity this is. 
                 In this application, you can create any data collection from hourly data in the 
                 'EPİAŞ Transparency API'. All you have to do is select the dates and columns you want.
                 
-                ###### You can open the data selection tab on mobile devices by using the arrow in the upper left or you can choose to use full screen from the computer.
+               
 
                 ##### Built With
 
