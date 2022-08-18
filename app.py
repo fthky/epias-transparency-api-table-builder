@@ -200,6 +200,8 @@ else:
                 Have you ever spent a lot of time merging columns in different files to create a new dataset. 
                 I can hear you saying yes. In this application, you can create any data collection from hourly data in the 
                 'EPİAŞ Transparency API'. All you have to do is select the dates and columns you want.
+                
+                It is recommended to use the application from a computer.
 
                 ##### Built With
 
