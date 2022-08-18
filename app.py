@@ -195,7 +195,7 @@ if st.sidebar.button('Create Table'):
 else:
    st.markdown("""
                 ##### About Application
-                Have you created a database by taking columns from different excel files and combining them in another excel file? 
+                Have you created a dataset by taking columns from different excel files and combining them in another excel file? 
                 If your answer is yes, you know how boring and time consuming activity this is. 
                 In this application, you can create any data collection from hourly data in the 
                 'EPİAŞ Transparency API'. All you have to do is select the dates and columns you want.
