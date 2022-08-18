@@ -197,11 +197,11 @@ if st.sidebar.button('Create Table'):
 else:
    st.markdown("""
                 ##### About Application
-                Have you ever spent a lot of time merging columns in different files to create a new dataset. 
+                Have you ever spent a lot of time merging columns in different files to create a new dataset?
                 I can hear you saying yes. In this application, you can create any data collection from hourly data in the 
                 'EPİAŞ Transparency API'. All you have to do is select the dates and columns you want.
                 
-                Use the application from the computer
+                Use the application from computer.
 
                 ##### Built With
 
