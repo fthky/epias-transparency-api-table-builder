@@ -16,8 +16,11 @@ class Querys:
         endpoint = f"market/day-ahead-mcp?endDate={endDate}&startDate={startDate}"
         response_data = self.getQuery(endpoint)
         df = pd.DataFrame.from_dict(response_data['body']['dayAheadMCPList'])
-        date = df['date']
-        return date
+        df = df["date"].str.split('T', expand=True)
+        df.columns = ["date",  "time"]
+        df['time'] = df['time'].str[:5]
+        #date = df['date']
+        return df
 
     @st.cache
     def realTimeConsumption(self, endDate, startDate, selected_columns):
