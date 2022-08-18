@@ -9,7 +9,7 @@ query = Querys()
 ####### Side Bar ######
 
 st.sidebar.header("Table Builder (EPIAS Transparency API)")
-st.sidebar.write("Scroll down and complete your selections. Then click the 'Create Table' button.")
+st.sidebar.write("Make your selection and create table")
 
 st.sidebar.subheader("Date")
 
@@ -29,7 +29,7 @@ selected_columns = []
 
 st.sidebar.subheader("Electricity Market")
 select_market_item = st.sidebar.multiselect(
-     "Please select what columns do you want. If you don't want, you can remove item.",
+     "",
      ['MCP (TL/MWh)' , 'MCP (EUR/MWh)', 'MCP (USD/MWh)', 'SMP (TL/MWh)' ,'Regulation','IDM - Weighted Average Price', "Net Regulation (MWh)", "Up Regulation 0 Coded (MWh)", "Up Regulation 1 Coded (MWh)", "Up Regulation 2 Coded (MWh)", "Down Regulation 0 Coded (MWh)","Down Regulation 1 Coded (MWh)", "Down Regulation 2 Coded (MWh)","Up Regulation Delivered (MWh)","Down Regulation Delivered (MWh)", "System's Direction",'Primary Frequence Capacity Price (TL/MWh)', 'Primary Frequence Capacity Amount (MWh)','Secondary Frequence Capacity Price (TL/MWh)', 'Secondary Frequence Capacity Amount (MWh)' ],
      ['MCP (TL/MWh)'])
 for i in select_market_item:
@@ -40,7 +40,7 @@ st.sidebar.markdown("***")
 
 st.sidebar.subheader("Electricity Consumption")
 select_consumption = st.sidebar.multiselect(
-     "Please select what columns do you want. If you don't want, you can remove item.",
+     "",
      ['Real Time Consumption (MWh)'],
      ['Real Time Consumption (MWh)'])
 for i in select_consumption:
@@ -51,7 +51,7 @@ st.sidebar.markdown("***")
 
 st.sidebar.subheader("Electricity Generation")
 select_generation = st.sidebar.multiselect(
-      "Please select what columns do you want. If you don't want, you can remove item.",
+      "",
      ['Asphaltite Coal', 'Biomass', 'Black Coal', 'Dammed Hydro', 'Fuel Oil', 'Gas Oil', 'Geothermal', 'Import Coal', 'Import Export', 'Lignite', 'Lng', 'Naptha', 'Natural Gas', 'Nucklear', 'River', 'Sun', 'Total Generation', 'Wasteheat' , 'Wind'],
      ['Total Generation'])
 for i in select_generation:
@@ -61,7 +61,6 @@ for i in select_generation:
 #st.write(selected_columns)
 
 st.sidebar.markdown("***")
-st.sidebar.write('Please click the button to create table')
 
 
 ##### Main Page #####
@@ -197,8 +196,9 @@ if st.sidebar.button('Create Table'):
 else:
    st.markdown("""
                 ##### About Application
-                Have you ever spent a lot of time merging columns in different files to create a new dataset?
-                I can hear you saying yes. In this application, you can create any data collection from hourly data in the 
+                Have you created a database by taking columns from different excel files and combining them in another excel file? 
+                If your answer is yes, you know how boring and time consuming activity this is. 
+                In this application, you can create any data collection from hourly data in the 
                 'EPİAŞ Transparency API'. All you have to do is select the dates and columns you want.
                 
                 Use the application from computer.
