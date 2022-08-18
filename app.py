@@ -122,7 +122,7 @@ column_names = {
     "System's Direction" : "System's Direction",
     }
 
-names=["date"]
+names=["date","time"]
 
 for i in selected_columns:
     x = column_names.get(i)
