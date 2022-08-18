@@ -187,7 +187,7 @@ if st.sidebar.button('Create Table'):
         st.markdown("""
         #### Your table is ready 👇
 
-        You can download it in CSV format with the button below the table.
+        You can download it in CSV format with the button.
         """)
 
         create_table()
