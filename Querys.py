@@ -19,8 +19,7 @@ class Querys:
         df = df["date"].str.split('T', expand=True)
         df.columns = ["date",  "time"]
         df['time'] = df['time'].str[:5]
-        date = df['date','time']
-        return date
+        return df
 
     @st.cache
     def realTimeConsumption(self, endDate, startDate, selected_columns):
