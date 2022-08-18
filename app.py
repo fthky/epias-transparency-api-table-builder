@@ -41,8 +41,8 @@ st.sidebar.markdown("***")
 st.sidebar.subheader("Electricity Consumption")
 select_consumption = st.sidebar.multiselect(
      "Please select what columns do you want. If you don't want, you can remove item.",
-     ['Real Time Consumption'],
-     ['Real Time Consumption'])
+     ['Real Time Consumption (MWh)'],
+     ['Real Time Consumption (MWh)'])
 for i in select_consumption:
     if len(select_consumption) != 0:
         selected_columns.append(i)
