@@ -200,7 +200,7 @@ else:
                 In this application, you can create any data collection from hourly data in the 
                 'EPİAŞ Transparency API'. All you have to do is select the dates and columns you want.
                 
-                Use the application from computer.
+                ###### You can open the data selection tab on mobile devices by using the arrow in the upper left or you can choose to use full screen from the computer.
 
                 ##### Built With
 
