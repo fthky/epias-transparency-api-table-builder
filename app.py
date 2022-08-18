@@ -158,9 +158,7 @@ def create_table():
     df_merge= df_all.loc[:,~df_all.columns.duplicated()]
 
     result = df_merge[names]
-    st.write(result)
-
-
+   
     @st.cache
     def convert_df(result):
         return result.to_csv().encode('utf-8')
@@ -176,7 +174,8 @@ def create_table():
     key='download-csv'
     )
 
-
+    st.write(result)
+     
 ##### Show Table #####
 
 if st.sidebar.button('Create Table'):
