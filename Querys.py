@@ -193,7 +193,7 @@ class Querys:
                 "upRegulationDelivered" : "Up Regulation Delivered (MWh)",
                 "downRegulationDelivered" : "Down Regulation Delivered (MWh)",
                 "direction" : "System's Direction"
-            })
+            }, inplace=True)
             return df_bpm
         else:
             pass
