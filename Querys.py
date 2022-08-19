@@ -4,6 +4,7 @@ import streamlit as st
 
 class Querys:
 
+
     @st.cache
     def getQuery(self, endpoint):
         BASE_URL = "https://seffaflik.epias.com.tr/transparency/service/"
@@ -27,7 +28,10 @@ class Querys:
             endpoint = f"consumption/real-time-consumption?endDate={endDate}&startDate={startDate}"
             response_data = self.getQuery(endpoint)
             df_realTimeConsumption = pd.DataFrame.from_dict(response_data['body']['hourlyConsumptions'])
-            df_realTimeConsumption.columns = ["date", "Real Time Consumption (MWh)"]
+            df_realTimeConsumption.rename(columns={
+                "date":"date",
+                "consumption":"Real Time Consumption (MWh)"
+                }, inplace=True)
             return df_realTimeConsumption
         else:
             pass
@@ -38,7 +42,12 @@ class Querys:
             endpoint = f"market/day-ahead-mcp?endDate={endDate}&startDate={startDate}"
             response_data = self.getQuery(endpoint)
             df_mcp = pd.DataFrame.from_dict(response_data['body']['dayAheadMCPList'])
-            df_mcp.columns = ['date', 'MCP (TL/MWh)', 'MCP (EUR/MWh)', 'MCP (USD/MWh)']
+            df_mcp.rename(columns={
+                "date":"date",
+                "price":"MCP (TL/MWh)",
+                "priceEur":'MCP (EUR/MWh)',
+                "priceUsd":'MCP (USD/MWh)'
+                }, inplace=True)
             return df_mcp
 
         else:
@@ -50,7 +59,27 @@ class Querys:
             endpoint = f"production/real-time-generation?endDate={endDate}&startDate={startDate}"
             response_data = self.getQuery(endpoint)
             df_realTimeGeneration = pd.DataFrame.from_dict(response_data['body']['hourlyGenerations'])
-            df_realTimeGeneration.columns = ['Asphaltite Coal', 'Biomass', 'Black Coal', 'Dammed Hydro', 'date', 'Fuel Oil', 'Gas Oil', 'Geothermal', 'Import Coal', 'Import Export', 'Lignite', 'Lng', 'Naptha', 'Natural Gas', 'Nucklear', 'River', 'Sun', 'Total Generation', 'Wasteheat' , 'Wind']
+            df_realTimeGeneration.rename(columns={'asphaltiteCoal':'Asphaltite Coal', 
+                                                'biomass': 'Biomass', 
+                                                'blackCoal':'Black Coal', 
+                                                'dammedHydro' : 'Dammed Hydro', 
+                                                'date' : 'date', 
+                                                'fueloil' : 'Fuel Oil', 
+                                                'gasOil' : 'Gas Oil', 
+                                                'geothermal' : 'Geothermal', 
+                                                'importCoal' : 'Import Coal', 
+                                                'importExport' : 'Import Export', 
+                                                'lignite' : 'Lignite', 
+                                                'lng' : 'Lng', 
+                                                'naphta' : 'Naptha', 
+                                                'naturalGas' : 'Natural Gas', 
+                                                'nucklear' : 'Nucklear', 
+                                                'river' : 'River', 
+                                                'sun' : 'Sun', 
+                                                'total' : 'Total Generation', 
+                                                'wasteheat' : 'Wasteheat' , 
+                                                'wind' : 'Wind'
+                                                }, inplace = True)
             return df_realTimeGeneration
 
         else:
@@ -63,7 +92,10 @@ class Querys:
             endpoint = f"market/intra-day-aof?endDate={endDate}&startDate={startDate}"
             response_data = self.getQuery(endpoint)
             df_weightedAveragePriceIDM = pd.DataFrame.from_dict(response_data['body']['idmAofList'])
-            df_weightedAveragePriceIDM.columns = ["date", "IDM - Weighted Average Price"]
+            df_weightedAveragePriceIDM.rename(columns={
+                "date" : "date",
+                "price" : "IDM - Weighted Average Price"
+                }, inplace=True)
             return df_weightedAveragePriceIDM
         else:
             pass
@@ -76,7 +108,10 @@ class Querys:
             endpoint = f"market/pfc-price?endDate={endDate}&startDate={startDate}"
             response_data = self.getQuery(endpoint)
             df_primaryFrequenceCapacityPrice = pd.DataFrame.from_dict(response_data['body']['frequencyReservePriceList'])
-            df_primaryFrequenceCapacityPrice.columns = ["Primary Frequence Capacity Price (TL/MWh)", "date", "hour"]
+            df_primaryFrequenceCapacityPrice.rename(columns={
+                "effectiveDate":"date",
+                "price":"Primary Frequence Capacity Price (TL/MWh)"
+                }, inplace=True)
             return df_primaryFrequenceCapacityPrice
         else:
             pass
@@ -87,7 +122,10 @@ class Querys:
             endpoint = f"market/pfc-amount?endDate={endDate}&startDate={startDate}"
             response_data = self.getQuery(endpoint)
             df_primaryFrequenceCapacityAmount = pd.DataFrame.from_dict(response_data['body']['frequencyReservePriceList'])
-            df_primaryFrequenceCapacityAmount.columns = ["hour", "date", "Primary Frequence Capacity Amount (MWh)"]
+            df_primaryFrequenceCapacityAmount.rename(columns={
+                "effectiveDate" : "date",
+                "totalAmount" : "Primary Frequence Capacity Amount (MWh)"
+                },inplace=True)
             return df_primaryFrequenceCapacityAmount
         else:
             pass
@@ -99,7 +137,10 @@ class Querys:
             endpoint = f"market/sfc-price?endDate={endDate}&startDate={startDate}"
             response_data = self.getQuery(endpoint)
             df_secondaryFrequenceCapacityPrice = pd.DataFrame.from_dict(response_data['body']['frequencyReservePriceList'])
-            df_secondaryFrequenceCapacityPrice.columns = ["Secondary Frequence Capacity Price (TL/MWh)", "date", "hour"]
+            df_secondaryFrequenceCapacityPrice.rename(columns={
+                "effectiveDate": "date",
+                "price" : "Secondary Frequence Capacity Price (TL/MWh)"
+                }, inplace=True)
             return df_secondaryFrequenceCapacityPrice
         else:
             pass
@@ -111,7 +152,10 @@ class Querys:
             endpoint = f"market/sfc-amount?endDate={endDate}&startDate={startDate}"
             response_data = self.getQuery(endpoint)
             df_secondaryFrequenceCapacityAmount = pd.DataFrame.from_dict(response_data['body']['frequencyReservePriceList'])
-            df_secondaryFrequenceCapacityAmount.columns = ["date", "hour", "Secondary Frequence Capacity Amount (MWh)"]
+            df_secondaryFrequenceCapacityAmount.rename(columns={
+                "effectiveDate":"date",
+                "totalAmount" : "Secondary Frequence Capacity Amount (MWh)"
+            }, inplace=True) 
             return df_secondaryFrequenceCapacityAmount
         else:
             pass
@@ -122,7 +166,10 @@ class Querys:
             endpoint = f"market/smp?endDate={endDate}&startDate={startDate}"
             response_data = self.getQuery(endpoint)
             df_smp = pd.DataFrame.from_dict(response_data['body']['smpList'])
-            df_smp.columns = ["date", "SMP (TL/MWh)", "Regulation", "smpDirectionId",""]
+            df_smp.rename(columns={
+              "price" : "SMP (TL/MWh)",
+              "smpDirection" : "Regulation",
+            }, inplace=True)
             return df_smp
         else:
             pass
@@ -135,7 +182,18 @@ class Querys:
             endpoint = f"market/bpm-order-summary?endDate={endDate}&startDate={startDate}"
             response_data = self.getQuery(endpoint)
             df_bpm = pd.DataFrame.from_dict(response_data['body']['bpmOrderSummaryList'])
-            df_bpm.columns = ["date", "Net Regulation (MWh)", "Up Regulation 0 Coded (MWh)", "Up Regulation 1 Coded (MWh)", "Up Regulation 2 Coded (MWh)", "Down Regulation 0 Coded (MWh)","Down Regulation 1 Coded (MWh)", "Down Regulation 2 Coded (MWh)","Up Regulation Delivered (MWh)","Down Regulation Delivered (MWh)", "System's Direction", "" ]
+            df_bpm.rename(columns={
+                "net" : "Net Regulation (MWh)",
+                "upRegulationZeroCoded" : "Up Regulation 0 Coded (MWh)",
+                "upRegulationOneCoded" : "Up Regulation 1 Coded (MWh)",
+                "upRegulationTwoCoded" : "Up Regulation 2 Coded (MWh)",
+                "downRegulationZeroCoded" : "Down Regulation 0 Coded (MWh)",
+                "downRegulationOneCoded" : "Down Regulation 1 Coded (MWh)",
+                "downRegulationTwoCoded" : "Down Regulation 2 Coded (MWh)",
+                "upRegulationDelivered" : "Up Regulation Delivered (MWh)",
+                "downRegulationDelivered" : "Down Regulation Delivered (MWh)",
+                "direction" : "System's Direction"
+            })
             return df_bpm
         else:
             pass
